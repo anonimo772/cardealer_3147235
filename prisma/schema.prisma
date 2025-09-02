@@ -13,20 +13,24 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+model category {
+  id Int 
+
+}
 //modelo del pryecto
 model brand{
+
   id_brand Int @id @default(autoincrement())
-  name String @db.VarChar(60)
-  cars car[]
+  name String
 }
 model car{
   id Int @id @default(autoincrement())
-  plate String @db.VarChar(6)
-  release_date DateTime @db.Date
-  is_avaliable Boolean @default(true)
-  precie Decimal @db.Decimal(10,2)
-  //campo de la clave foranea
-  brand_id Int
-  //relacion con la tabla brand
-  brand brand @relation(fields: [brand_id], references: [id_brand]) 
+  name String @db.VarChar(15)
+ release_date DateTime @db.DateTime()
+ price Decimal 
+ category_id Int 
+ bran_id Int 
+ categorY @relations ( resource caterories
+  fields:[category_id],
+  referecnes:[id_category]
 }
